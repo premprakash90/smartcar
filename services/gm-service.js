@@ -1,5 +1,5 @@
 /**
- * GM service handles all communication to between Smart Car Server and GM APIs
+ * Responsible for handling all communication between Smart Car Server and GM APIs
  * @constructor
  */
 function GMService() {
@@ -7,7 +7,7 @@ function GMService() {
 }
 
 /**
- * Validates vehicleId
+ * Validates GM's vehicleId
  * @param vehicleId
  * @returns {boolean}
  */
@@ -16,7 +16,7 @@ GMService.prototype.isValidVehicle = function(vehicleId) {
 };
 
 /**
- * Gets vehicle info from http://gmapi.azurewebsites.net/getVehicleInfoService
+ * Gets vehicle info from GM API - http://gmapi.azurewebsites.net/getVehicleInfoService
  * @param vehicleId
  * @param cb
  */
@@ -50,7 +50,7 @@ GMService.prototype.getVehicleInfo = function (vehicleId, cb) {
 };
 
 /**
- * Gets secuirty status from http://gmapi.azurewebsites.net/getSecurityStatusService
+ * Gets secuirty status from GM API - http://gmapi.azurewebsites.net/getSecurityStatusService
  * @param vehicleId
  * @param cb
  */
@@ -83,7 +83,7 @@ GMService.prototype.getSecurityStatus = function (vehicleId, cb) {
 };
 
 /**
- * Gets energy info from http://gmapi.azurewebsites.net/getEnergyService
+ * Gets energy info from GM API - http://gmapi.azurewebsites.net/getEnergyService
  * @param vehicleId
  * @param cb
  */
@@ -117,7 +117,7 @@ GMService.prototype.getEnergyInfo = function (vehicleId, cb) {
 };
 
 /**
- * Update engine state by post to http://gmapi.azurewebsites.net/actionEngineService
+ * Update engine state by posting to GM API - http://gmapi.azurewebsites.net/actionEngineService
  * @param vehicleId
  * @param state
  * @param cb
@@ -154,7 +154,7 @@ GMService.prototype.modifyEngineState = function (vehicleId, state, cb) {
 };
 
 /**
- * Converts response of http://gmapi.azurewebsites.net/getEnergyService to a SmartCar Fuel API format
+ * Converts response of http://gmapi.azurewebsites.net/getEnergyService to SmartCar Fuel API format
  * @param response
  * @param cb
  * @returns {*}
@@ -180,7 +180,7 @@ GMService.prototype.convertEnergyInfoToFuelSmartCarFormat = function (response, 
 
 
 /**
- * Converts response of http://gmapi.azurewebsites.net/actionEngineService to a SmartCar Engine API format
+ * Converts response of http://gmapi.azurewebsites.net/actionEngineService to SmartCar Engine API format
  * @param response
  * @param cb
  * @returns {*}
@@ -200,7 +200,7 @@ GMService.prototype.convertEngineActionToSmartCarFormat = function (response, cb
 };
 
 /**
- * Converts response of http://gmapi.azurewebsites.net/actionEngineService to a SmartCar Battery API format
+ * Converts response of http://gmapi.azurewebsites.net/actionEngineService to SmartCar Battery API format
  * @param response
  * @param cb
  * @returns {*}
@@ -225,7 +225,7 @@ GMService.prototype.convertEnergyInfoToBatterySmartCarFormat = function (respons
 };
 
 /**
- * Converts response of http://gmapi.azurewebsites.net/getSecurityStatusService to a SmartCar Door API format
+ * Converts response of http://gmapi.azurewebsites.net/getSecurityStatusService to SmartCar Door API format
  * @param response
  * @param cb
  * @returns {*}
@@ -262,7 +262,7 @@ GMService.prototype.covertSecurityStatusToSmartCarFormat = function (response, c
 };
 
 /**
- * Converts response of http://gmapi.azurewebsites.net/getVehicleInfoServiceto a SmartCar Vehicle API format
+ * Converts response of http://gmapi.azurewebsites.net/getVehicleInfoService to SmartCar Vehicle API format
  *
  * @param response
  * @param cb

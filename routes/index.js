@@ -34,7 +34,7 @@ router.get('/vehicles/:id', function(req, res) {
                     return res.status(500).json({message: INTERNAL_ERROR});
                 }
 
-                // everything is okay return 200 if smart car API response
+                // everything is okay return 200 with smart car API response
                 res.status(200);
                 return res.send(data);
             });
