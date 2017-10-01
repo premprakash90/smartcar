@@ -1,0 +1,23 @@
+{
+  "name": "smartcar",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "chai": "^4.1.2",
+    "cookie-parser": "~1.4.3",
+    "curlrequest": "^1.0.1",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "jade": "~1.11.0",
+    "mocha": "^3.5.3",
+    "morgan": "~1.8.1",
+    "request": "^2.83.0",
+    "serve-favicon": "~2.4.2",
+    "should": "^13.1.0",
+    "supertest": "^3.0.0"
+  }
+}
