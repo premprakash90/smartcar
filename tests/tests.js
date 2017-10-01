@@ -155,4 +155,19 @@ describe("Test Vehicle engine response with invalid action - /vehicles/1234/engi
 });
 
 
+describe('Test invalid url path - /vehicle/door/123', function () {
+    it('should return 404', function (done) {
+        server
+            .get('/vehicle/door/123')
+            .expect(404)
+            .expect('Content-Type', /json/)
+            .end(function (err, res) {
+                res.status.should.equal(404);
+                done();
+            });
+    })
+
+});
+
+
 
