@@ -62,7 +62,7 @@ GMService.prototype.getSecurityStatus = function (vehicleId, cb) {
             'Content-Type': 'application/json'
         },
         json: {
-            "id": "1234",
+            "id": vehicleId,
             "responseType": "JSON"
         }
     };
@@ -78,6 +78,7 @@ GMService.prototype.getSecurityStatus = function (vehicleId, cb) {
             return cb(err);
         }
 
+        console.log(body);
         return cb(null, body);
     })
 };
@@ -95,7 +96,7 @@ GMService.prototype.getEnergyInfo = function (vehicleId, cb) {
             'Content-Type': 'application/json'
         },
         json: {
-            "id": "1234",
+            "id": vehicleId,
             "responseType": "JSON"
         }
     };
@@ -123,7 +124,6 @@ GMService.prototype.getEnergyInfo = function (vehicleId, cb) {
  * @param cb
  */
 GMService.prototype.modifyEngineState = function (vehicleId, state, cb) {
-    console.log(state);
     var options = {
         url: 'http://gmapi.azurewebsites.net/actionEngineService',
         method: 'POST',
@@ -131,7 +131,7 @@ GMService.prototype.modifyEngineState = function (vehicleId, state, cb) {
             'Content-Type': 'application/json'
         },
         json: {
-            "id": "1234",
+            "id": vehicleId,
             "command": state,
             "responseType": "JSON"
         }
@@ -238,23 +238,15 @@ GMService.prototype.covertSecurityStatusToSmartCarFormat = function (response, c
         cb(new Error("Empty response - Unable to convert GM Security Status to Smart Car Format"))    ;
     }
 
-    console.log(response['data']['doors']['values'].length);
-
-    if (response['data']['doors'] && response['data']['doors']['values'] && response['data']['doors']['values'].length === 4) {
-        if (response['data']['doors']['values'][0]['location'] && response['data']['doors']['values'][0]['location']['value'] &&
-            response['data']['doors']['values'][0]['locked'] && response['data']['doors']['values'][0]['locked']['value']) {
-            var d1 = {};
-            d1['location'] = response['data']['doors']['values'][0]['location']['value'];
-            d1['locked'] = response['data']['doors']['values'][0]['locked']['value'] === "True";
-            out.push(d1)
-        }
-
-        if (response['data']['doors']['values'][1]['location'] && response['data']['doors']['values'][1]['location']['value'] &&
-            response['data']['doors']['values'][1]['locked'] && response['data']['doors']['values'][1]['locked']['value']) {
-            var d2 = {};
-            d2['location'] = response['data']['doors']['values'][1]['location']['value'];
-            d2['locked'] = response['data']['doors']['values'][1]['locked']['value'] === "True";
-            out.push(d2)
+    if (response['data']['doors'] && response['data']['doors']['values']) {
+        for (var i=0; i < response['data']['doors']['values'].length; i++) {
+            if (response['data']['doors']['values'][i]['location'] && response['data']['doors']['values'][i]['location']['value'] &&
+                response['data']['doors']['values'][i]['locked'] && response['data']['doors']['values'][i]['locked']['value']) {
+                var d1 = {};
+                d1['location'] = response['data']['doors']['values'][i]['location']['value'];
+                d1['locked'] = response['data']['doors']['values'][i]['locked']['value'] === "True";
+                out.push(d1)
+            }
         }
     }
 

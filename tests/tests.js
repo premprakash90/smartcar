@@ -57,10 +57,9 @@ describe("Tests vehicle door response - /vehicles/1234/doors",function() {
             .expect('Content-Type', /json/)
             .end(function (err, res) {
                 res.status.should.equal(200);
-                res.body.should.with.lengthOf(2);
-                res.body[0].should.have.properties('location', 'locked');
-                res.body[1].should.have.properties('location', 'locked');
-
+                for (var i = 0; i < res.body.length; i++) {
+                    res.body[i].should.have.properties('location', 'locked');
+                }
                 done();
             });
     });
