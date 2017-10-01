@@ -6,7 +6,7 @@ Make sure you have [Node.js](http://nodejs.org/).
 git clone git@github.com:premprakash90/smartcar.git 
 cd smartcar
 npm install
-node app.js
+npm start
 ```
 
 The server runs at http://localhost:3000
